@@ -26,12 +26,12 @@ namespace StartYourEDay.Controllers
 
         public IActionResult Index()
         {
-            // var dailyMessage = _dailyMessageService.GetTodaysMessage(DateTime.Now);
+             var dailyMessage = _dailyMessageService.GetTodaysMessage(DateTime.Now);
             Console.WriteLine(GetUserLanguagePreference());
 
             return View(new HomeViewModel {
-                Message = "Time to get up and have a stretch",// dailyMessage.GetMessage(GetUserLanguagePreference()),
-                ImageUrl = "https://images.unsplash.com/photo-1569698045292-e14cb5393e79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" //dailyMessage.ImageUrl
+                Message = dailyMessage.GetMessage(GetUserLanguagePreference()),
+                ImageUrl = dailyMessage.ImageUrl
             });
         }
 

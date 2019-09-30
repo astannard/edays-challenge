@@ -20,8 +20,11 @@ namespace StartYourEDay
             Configuration = configuration;
 
             //DB migration runner
-            var ctx = new DataContext();
+            var ctx = new MessageDataContext();
             ctx.Database.EnsureCreated();
+            ctx.CheckInitialDataSetup();
+            ctx.SaveChanges();
+            ctx.Dispose();
         }
 
         public IConfiguration Configuration { get; }
@@ -30,7 +33,7 @@ namespace StartYourEDay
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDailyMessageService, DailyMessageService>();
-            services.AddScoped<DataContext, DataContext>();
+            services.AddScoped<MessageDataContext, MessageDataContext>();
 
             services.AddControllersWithViews();
         }

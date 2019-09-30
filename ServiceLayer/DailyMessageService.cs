@@ -7,10 +7,10 @@ namespace ServiceLayer
 {
     public class DailyMessageService : IDailyMessageService
     {
-        private DataLayer.DataContext _ctx;
+        private DataLayer.MessageDataContext _ctx;
         private readonly ILogger<DailyMessageService> _logger;
 
-        public DailyMessageService(ILogger<DailyMessageService> logger, DataLayer.DataContext ctx)
+        public DailyMessageService(ILogger<DailyMessageService> logger, DataLayer.MessageDataContext ctx)
         {
             _logger = logger;
             _ctx = ctx;

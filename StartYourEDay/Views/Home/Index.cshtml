@@ -5,13 +5,13 @@
 
 <div class="text-center">
 
-    <h1 class="display-4">@Model.Message</h1>
+    <h1 class="display-4">@Html.Raw(Model.Message)</h1>
 
 
     <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.Message">
   <div class="card-body">
-    <h5 class="card-title">@Model.Message</h5>
+    <h5 class="card-title">@Html.Raw(Model.Message)</h5>
       </div>
          <div class="card-footer text-muted">
     <p class="card-text">If you would like another langue please choose here:
@@ -48,11 +48,12 @@
           return "";
         }
 
-    function saveLanguageSelection(e){
-        debugger;
+    async function saveLanguageSelection(e){
+        
         var newLanguage = document.getElementById('selectLanguage').value;
 
-        fetch('@Url.Action("SetLanguagePreferenceCookie")'+'?language='+newLanguage); //could use interpolation here
+        await fetch('@Url.Action("SetLanguagePreferenceCookie")'+'?language='+newLanguage);  //could use interpolation here
+        location.reload();
     }
 
 

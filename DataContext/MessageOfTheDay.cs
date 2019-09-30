@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataLayer
 {
+    [Table("MessagesOfTheDay")]
     public class MessageOfTheDay
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
